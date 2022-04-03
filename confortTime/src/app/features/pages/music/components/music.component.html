@@ -1,0 +1,169 @@
+<div *ngIf="!musicLoading">
+  <comforTime-progressbar></comforTime-progressbar>
+  <!-- <p style="color: #fff; margin: 0 auto;">Sto caricando</p>  -->
+</div>
+<div *ngIf="musicLoading">
+  <div class="comforTime-table__container {{temaScelto}}" id="theme-dark">
+    <div class="comfortime-table__row">
+      <div class="comforTime-table__content">
+        <div class="comforTime-row__content">
+         <div class="foto">
+      </div>
+      <div class="comforTime-row__contenTEXT">
+        <h1>music</h1>
+        <h4>Aggiorna la tua lista di canzoni</h4>
+        <p>Ascolta, dove e quando vuoi <br> i tuoi brani preferiti</p>
+        <button (click)="openDialog()" class="bookBTN">Aggiungi una canzone!</button>
+      </div>
+    </div>
+      </div>
+    
+    </div><!-- row -->
+    <div class="comfortime-table__row">
+      <div class="comforTime-table__content">
+        <div class="mat-elevation-z8 hidden">
+          
+            <div>
+              <div class="theme-options">
+                <div>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Cerca la tua canzone...</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                  </mat-form-field>
+                </div>
+                <div class="example-button-container">
+                  <button mat-mini-fab aria-label="Example icon button with a filter list icon" (click)="openDialog()">
+                    <mat-icon>note_add</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <div id="theme-dark" class="theme theme-dark" (click)="setTheme('theme-dark')"></div>
+                  <div id="theme-light" class="theme theme-light" (click)="setTheme('theme-light')"></div>
+                </div>
+
+              </div>
+            </div>
+            <div class="tabella">
+              <table mat-table [dataSource]="dataSource" matSort>
+
+                <!--Music Title Column -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                  <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+                </ng-container>
+
+                <!-- Music Image Column -->
+                <ng-container matColumnDef="image_url">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Image Url </th>
+                  <td mat-cell *matCellDef="let row"> <img src={{row.image_url}} width="100px"> </td>
+                </ng-container>
+
+                <!-- Music Artist Name Column -->
+                <ng-container matColumnDef="artistName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Artist Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.artist.name}} </td>
+                </ng-container>
+
+                <!-- Music Artist Name Group Column -->
+                <ng-container matColumnDef="group">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Artist Group </th>
+                  <td mat-cell *matCellDef="let row"> {{row.artist.group}} </td>
+                </ng-container>
+
+                <!-- Music Album Name Column -->
+                <ng-container matColumnDef="albumName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Album Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.album.name}} </td>
+                </ng-container>
+
+                <!-- Music Album Year Column -->
+                <ng-container matColumnDef="year">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Album Year </th>
+                  <td mat-cell *matCellDef="let row"> {{row.album.year}} </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button (click)="openViewsMusic(row)" mat-icon-button color="info">  
+                      <i class="fa-solid fa-music"></i>
+                    </button>
+                    <button (click)="editMusic(row)" mat-icon-button color="primary">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="deleteMusic(row.music_id)" mat-icon-button color="warn">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            </div>
+        
+        </div><!-- Z8 -->
+        <div class="comforTime-card__row">
+          <div class="comforTime-card__sezione">
+           <h1>MUSIC</h1>
+          </div>
+        <div class="comforTime-card__container"*ngFor="let serie of allMusic">
+        
+          <div class="comforTime-card__content"> 
+            <div class="comforTime-card__logoCard"></div> 
+          <div class="riga"></div>
+            <div class="comforTime-card__title">
+              <h1>{{serie.title}}</h1>
+            </div>
+            <div>
+              <img [src]="serie.image_url">
+            </div>
+            <div>
+             <p>Attori</p>
+            </div>
+            <div class="riga"></div>
+            <div class="comforTime-card__BTNcard comforTime-card__title">
+
+ <div class="btn-card">
+              <button mat-icon-button (click)="openViewsMusic(newMusic)">  
+              <mat-icon>personal_video</mat-icon>
+            </button>
+          </div> 
+           <div class="btn-card">
+              <button mat-icon-button (click)=" editMusic(newMusic)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              </div>
+              <div class="btn-card">
+              <button mat-icon-button (click)="deleteMusic(newMusic.music_id)" color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+            </div>
+
+            </div>
+           
+          </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--content -->
+
+    </div><!-- row -->
+  </div><!-- container -->
+
+
+<div *ngIf="!allMusic">
+  <h1>Non hai ancora inserito niente!</h1>
+  <button (click)="openDialog()">Aggiungi una canzone!</button>
+</div>

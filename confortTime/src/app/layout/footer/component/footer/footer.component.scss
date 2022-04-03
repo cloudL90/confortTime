@@ -1,0 +1,144 @@
+@import '../../../../style/colorPalette.scss';
+
+.comforTime-footer__container {
+    background-color: black;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0%;
+    text-align: center;
+    padding: 10px;
+    width: 100vw;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    left: 0;
+    max-width: 100%;
+    // bottom: -82px;
+    .comforTime-footer__row{
+        // display: flex;
+        margin-top: 1rem;
+        
+        .container-icon{
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem;
+            
+            .icona{
+                color:map-get($color-palette , quaternary );
+                font-size: 2.5rem;
+                padding: 0 0.5rem;
+                
+            }
+            
+            .icona:hover{
+                color: rgb(255, 255, 255)!important;
+                cursor: pointer;
+            }
+            
+            .logout{
+                color: white;
+                
+                :hover{
+                    color:map-get($color-palette , quaternary );
+                }
+            }
+        }
+        
+    
+        .blue-team-copyright-test{
+            margin-bottom: 2rem;
+        }
+
+    }
+}
+
+// .facebook{
+//     position: fixed;
+//     left: 5%;
+//     top: 94%;
+//     font-size: 30px;
+
+//     i {
+//         color: rgb(255, 255, 255);
+//     }
+
+//     i:hover{
+//         color: #3b5998;
+//     }
+// }
+
+// .twitter{
+//     position: fixed;
+//     left: 10%;
+//     top:94%;
+//     font-size: 30px;
+
+//     i{
+//         color: black;
+//     }
+
+//     i:hover{
+//         color: #00acee;
+//     }
+// }
+
+// .linkedin{
+//     position: fixed;
+//     right: 10%;
+//     top: 94%;
+//     font-size: 30px;
+
+//     i{
+//         color: black;
+//     }
+
+//     i:hover{
+//         color: #0e76a8;
+//     }
+// }
+
+// .instagram{
+//     position: fixed;
+//     right: 5%;
+//     top: 94%;
+//     font-size: 30px;
+
+//     i{
+//         color: black;
+//     }
+
+//     i:hover{
+//         color: #3f729b;
+//     }
+// }
+
+// .copyright-material-icons{
+//     font-family: 'Material Icons';
+//     font-weight: normal;
+//     font-style: normal;
+//     font-size: 18px;
+//     line-height: 1;
+//     letter-spacing: normal;
+//     text-transform: none;
+//     display: inline-block;
+//     white-space: nowrap;
+//     word-wrap: normal;
+//     direction: ltr;
+//     -webkit-font-feature-settings: 'liga';
+//     -webkit-font-smoothing: antialiased;
+// }
+// p {
+//     text-align: center;
+// }
+// @media screen and (max-width: 500px) {
+//     .blue-team-footer a {
+//       float: left;
+//       display: inline;
+//       justify-content: center;
+//       padding-bottom: -10%;
+//     }
+//     .blue-team-copyright-test{
+//         display: none;
+//     }
+//   }

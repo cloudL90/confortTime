@@ -1,0 +1,194 @@
+@import '../../../../style/colorPalette.scss';
+.limitTextHeight {
+    height: 40px;
+    overflow: hidden;
+}
+
+@import '../../../../style/colorPalette.scss';
+.limitTextHeight {
+    height: 40px;
+    overflow: hidden;
+    //max-width: 100%;
+}
+
+.comforTime-details__container{
+   
+    color: map-get($color-palette ,primary );
+     
+    .comforTime-details__row{
+        
+        display: flex;
+        justify-content: center;
+        .comforTime-details__content{ 
+            box-shadow: 0px 0px 30px map-get($color-palette ,primary);
+           padding: 3% 0;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5% 0;
+        .riga{
+            background-color:#fff;
+            height: 2px;
+            width: 100%;
+            margin-bottom: 2%;
+        }
+        //padding: 5% 0;
+        
+           
+           h1{
+           // background-color: #fff;
+            width: 100%;
+            text-align: center;
+            margin:0 ;
+           }
+            .foto{
+                width: 50%;
+            }
+           
+
+         
+            .comforTime-details__download{
+                .comforTime-details__downloadimg{
+                    display: flex;
+                    justify-content: center;
+                    a{
+                        text-align: center;
+                    }
+                }
+                p{
+                    font-size: 1rem;
+
+                    text-align: center;
+                    color: map-get($color-palette ,primary );
+                }
+                img{
+                    width: 50%;
+                }
+            
+            }
+            .autore{
+                background-color: #fff;
+                width: 100%;
+                margin-bottom: 2%;
+          
+                
+                h2{
+                    text-align: center;
+                    margin: auto
+                }
+               }
+               .comforTime-card__BTNcard{
+                .bookBTN{
+                    background-color:map-get($color-palette , primary );
+                    padding: 10px;
+                    border-radius: 50px;
+                    color: #fff;
+                    font-size: 1rem;
+                    outline: none;
+                    border: none;
+                  }
+              
+                  .bookBTN:hover{
+                    background-color:map-get($color-palette , primary );
+                    box-shadow:0px 0px 10px map-get($color-palette , primary );
+                   
+                  }
+               }
+          
+        }
+       
+    }
+}
+
+
+@media screen and (max-width:495px ){
+    
+.comforTime-details__container{
+   
+    color: map-get($color-palette ,primary );
+     
+    .comforTime-details__row{
+        
+        display: flex;
+        justify-content: center;
+        .comforTime-details__content{ 
+            box-shadow: 0px 0px 30px map-get($color-palette ,primary);
+           padding: 3% 0;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5% 0;
+        .riga{
+            background-color:#fff;
+            height: 2px;
+            width: 100%;
+            margin-bottom: 2%;
+        }
+        //padding: 5% 0;
+        
+           
+           h1{
+            max-width: 80%;
+            margin: 0 auto;
+           }
+            .foto{
+                width: 50%;
+            }
+           
+
+         
+            .comforTime-details__download{
+                .comforTime-details__downloadimg{
+                    display: flex;
+                    justify-content: center;
+                    a{
+                        text-align: center;
+                    }
+                }
+                p{
+                    font-size: 100%;
+                    text-align: center;
+                    color: map-get($color-palette ,primary );
+                }
+                img{
+                    width: 50%;
+                }
+            
+            }
+            .autore{
+                background-color: #fff;
+                width: 100%;
+                margin-bottom: 2%;
+          
+                
+                h2{
+                    max-width: 80%;
+                    margin: 0 auto;
+                }
+               }
+               .comforTime-card__BTNcard{
+                .bookBTN{
+                    background-color:map-get($color-palette , primary );
+                    padding: 1%;
+                    border-radius: 50px;
+                    color: #fff;
+                    font-size: 70%;
+                    outline: none;
+                    border: none;
+                  }
+              
+                 
+               }
+          
+        }
+       
+    }
+}
+
+
+}
+@media ( min-width: 496px ) and ( max-width: 768px ){
+  
+}

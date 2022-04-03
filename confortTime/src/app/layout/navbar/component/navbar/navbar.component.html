@@ -1,0 +1,54 @@
+<mat-toolbar>
+    <div class="Ct-navBar__container">
+        <div class="Ct-navBar__row">
+
+            <a class="Ct-btn__btn btn" [ngClass]="{'active': tabIndex === 1}" (click)="goToBooks(0)">Books</a>
+            <a class="Ct-btn__btn btn" [ngClass]="{'active': tabIndex === 2}" (click)="goToMovies(1)"
+                routerLinkActive="router-link-active">Movies</a>
+            <a href="/">
+
+
+                <img src="assets/LogoDef.svg" [ngClass]="{'active': tabIndex === 0}" width="80" height="80"
+                    (click)="goToHome()">
+            </a>
+            <a class="Ct-btn__btn btn" [ngClass]="{'active': tabIndex === 3}" (click)="goToMusic(2)">Music</a>
+            <a class="Ct-btn__btn btn" [ngClass]="{'active': tabIndex === 4}" (click)="goToSeriesTv(3)">Tv-Series</a>
+        </div>
+    </div>
+</mat-toolbar>
+
+<!-- HAMBURGER MENU RESPONSIVE -->
+<div class="hamburger-menu-container">
+    <div class="logo-hamburger-menu">
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <img src="../../../../../assets/LogoDef.svg" alt="logo-hamburger-menu">
+        </button>
+    </div>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="goToHome()">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-menu-item (click)="goToBooks(4)">
+            <mat-icon>book</mat-icon>
+            <span>Books</span>
+        </button>
+        <button mat-menu-item (click)="goToMovies(1)">
+            <mat-icon>movie</mat-icon>
+            <span>Movies</span>
+        </button>
+        <button mat-menu-item (click)="goToMusic(2)">
+            <mat-icon>music_video</mat-icon>
+            <span>Music</span>
+        </button>
+        <button mat-menu-item (click)="goToSeriesTv(3)">
+            <mat-icon>tv series</mat-icon>
+            <span>Tv-Series</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span><b>LOGOUT</b></span>
+        </button>
+    </mat-menu>
+</div>

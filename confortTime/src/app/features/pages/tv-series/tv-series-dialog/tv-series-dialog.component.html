@@ -1,0 +1,120 @@
+<div class="comforTime-formAdd__container">
+  <div class="comforTime-formAdd__row">
+    <div class="comforTime-row__content">
+
+
+
+      <div class="foto">
+
+      </div>
+      <div>
+        <h1 mat-dialog-title>Serie Tv</h1>
+        <h4>{{ actionTitle }}</h4>
+      </div>
+    </div>
+
+  </div>
+  <!--row-->
+
+
+  <div class="comforTime-formAdd__row">
+
+
+    <!-- ------------WORKING FROM DOWN HERE------------------------------------------- -->
+
+    <div mat-dialog-content class="comforTime-dialog__content">
+      
+      <div *ngIf="data.mode === 'insert' || data.mode === 'edit'; then postTemplate; else viewTemplate">
+      </div>
+
+      <ng-template #postTemplate>
+        <form [formGroup]="tvSeriesForm">
+          <p>
+            <!-- <input type="file" name="file"  (change)="caricaFile($event)"  > -->
+            <mat-form-field appearance="outline">
+              <mat-label>Tv Series Title</mat-label>
+              <input matInput placeholder="insert tv series title" name="title" formControlName="title">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Tv Series Actors</mat-label>
+              <input matInput placeholder="insert tv series actors" name="actors" formControlName="actors">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Season</mat-label>
+              <input type="number" class="form-control" matInput name="season" placeholder="Season" min="1"
+                formControlName="season">
+            </mat-form-field>
+          </p>
+          <br>
+          <p>
+            <mat-form-field>
+              <mat-label>Episode</mat-label>
+              <input type="number" class="form-control" matInput name="episode" placeholder="Number" min="1"
+                formControlName="episode">
+            </mat-form-field>
+          </p>
+          <br>
+          <mat-label>Image</mat-label>
+          <input type="file" placeholder="insert music image" id="file" formControlName="file"
+            (change)="onFileSelected($event)">
+          <!-- <input type="file" name="file" formControlName=""(change)="onFileSelected($event)"> -->
+          <!-- <mat-form-field>
+                <ngx-mat-file-input formControlName="file" placeholder="Basic Input" ></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field> -->
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Author name</mat-label>
+                <input matInput placeholder="insert tv series author name" [formControl]="getControl('author.name')">
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Author Group</mat-label>
+                <input matInput placeholder="insert tv series author group" [formControl]="getControl('author.group')">
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Streaming Provider</mat-label>
+                <input matInput placeholder="insert streaming provider name"
+                  [formControl]="getControl('streaming_provider.name')">
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Streaming Provider</mat-label>
+                <input matInput placeholder="insert streaming provider year"
+                  [formControl]="getControl('streaming_provider.year')">
+              </mat-form-field>
+            </p>
+          </div>
+        </form>
+      </ng-template>
+
+      <ng-template #viewTemplate>
+        <comforTime-tvseries-views-dialog [tvSeries]='data.rowData'></comforTime-tvseries-views-dialog>
+      </ng-template>
+
+      <!-- mat dialog commands -->
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button [disabled]="!tvSeriesForm.valid" (click)="sendData(tvSeriesForm)"
+          color="primary">{{actionBtn}}</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      </div>
+    </div><!--content-->
+   
+  </div> <!--row -->
+  
+</div><!--container -->

@@ -1,0 +1,139 @@
+
+<div class="comforTime-formAdd__container">
+  <div class="comforTime-formAdd__row">
+    <div class="comforTime-row__content">
+
+      <div class="foto">
+
+      </div>
+      <div>
+        <h1 mat-dialog-title>Book</h1>
+        <h4>{{ actionTitle }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="comforTime-formAdd__row">
+    <div mat-dialog-content class="mat-dialog-content comforTime-dialog__content">
+      <div *ngIf="data.mode === 'insert' || data.mode === 'edit'; then postTemplate; else viewTemplate">
+      </div>
+
+      <ng-template #postTemplate>
+        <form [formGroup]="bookForm">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="year" name="year">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <mat-label>Image Url</mat-label>
+        <input type="file" placeholder="insert book image" id="file" formControlName="file"
+          (change)="onFileSelected($event)">
+
+        <!-- <input type="file" name="file" formControlName=""(change)="onFileSelected($event)"> -->
+        <!-- <mat-form-field>
+              <ngx-mat-file-input formControlName="file" placeholder="Basic Input" ></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field> -->
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" id="" cols="30" rows="10" name="description"
+              formControlName="description"></textarea>
+          </mat-form-field>
+        </p>
+        <p>
+          <!-- <input type="file" name="file"  (change)="caricaFile($event)"  > -->
+          <mat-form-field appearance="outline">
+            <mat-label>Book Title</mat-label>
+            <input matInput placeholder="insert book title" name="title" formControlName="title">
+          </mat-form-field>
+        </p>
+
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Author name</mat-label>
+              <input matInput placeholder="insert book author name" [formControl]="getControl('author.name')">
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Author lastname</mat-label>
+              <input matInput placeholder="insert book author lastname" [formControl]="getControl('author.lastname')">
+            </mat-form-field>
+          </p>
+        </div>
+      </form>
+
+      <form *ngIf="data.mode === 'post'" [formGroup]="bookForm">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="year" name="year">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <mat-label>Image Url</mat-label>
+        <input type="file" placeholder="insert book image" id="file" formControlName="file"
+          (change)="onFileSelected($event)">
+
+        <!-- <input type="file" name="file" formControlName=""(change)="onFileSelected($event)"> -->
+        <!-- <mat-form-field>
+              <ngx-mat-file-input formControlName="file" placeholder="Basic Input" ></ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field> -->
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" id="" cols="30" rows="10" name="description"
+              formControlName="description"></textarea>
+          </mat-form-field>
+        </p>
+        <p>
+          <!-- <input type="file" name="file"  (change)="caricaFile($event)"  > -->
+          <mat-form-field appearance="outline">
+            <mat-label>Book Title</mat-label>
+            <input matInput placeholder="insert book title" name="title" formControlName="title">
+          </mat-form-field>
+        </p>
+
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Author name</mat-label>
+              <input matInput placeholder="insert book author name" [formControl]="getControl('author.name')">
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Author lastname</mat-label>
+              <input matInput placeholder="insert book author lastname" [formControl]="getControl('author.lastname')">
+            </mat-form-field>
+          </p>
+        </div>
+      </form>
+      </ng-template>
+
+      <ng-template #viewTemplate>
+        <comforTime-books-views-dialog [book]='data.rowData'></comforTime-books-views-dialog>
+      </ng-template>
+
+      <!-- mat dialog commands -->
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button [disabled]="!bookForm.valid" (click)="sendData(bookForm)"
+          color="primary">{{actionBtn}}</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      </div>
+    </div>
+
+  </div>
+  </div>

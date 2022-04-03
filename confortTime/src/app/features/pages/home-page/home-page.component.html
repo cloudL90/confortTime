@@ -1,0 +1,64 @@
+<div class="comforTime-home__container">
+    <div class="nav">
+        <comforTime-navbar></comforTime-navbar>
+        <!-- <h1 class="sezione logout-btn" *ngIf="currentRoute === '/' || !currentRoute">
+            <span class="logout-trigger" (click)="logout()">Logout</span>
+        </h1> -->
+    </div>
+
+
+
+
+    <div class="comforTime-home__content">
+
+        <h1 class="sezione" *ngIf="currentRoute == '/' || !currentRoute">
+            <div class="comforTime-home__contenTEXT">
+                <h1 class="comfortime__title">comfortime</h1>
+                <h4 class="comfortime__subtitle">Tieni a portata di App tutte le sesazioni della tua vita.</h4>
+                <p class="comfortime__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p class="comfortime__termini"><a href="#">termini e condizioni</a></p>
+            </div>
+            <!--    Homepage
+
+         <div class="login">
+        <a  routerLink="login">login</a>
+        <br>
+        <a href="#">logout</a>
+    </div> -->
+        </h1>
+
+
+
+
+
+
+        <h1 class="sezione" *ngIf="currentRoute === '/books'" style="background-image: none;">
+            Homepage -
+            sezione libri
+        </h1>
+        <h1 class="sezione" *ngIf="currentRoute === '/movies'" style="background-image: none;">
+            Homepage -
+            sezione film
+        </h1>
+        <h1 class="sezione" *ngIf="currentRoute === '/tv-series'" style="background-image: none;">
+            Homepage -
+            sezione serie tv
+        </h1>
+        <h1 class="sezione" *ngIf="currentRoute === '/music'" style="background-image: none;">
+            Homepage -
+            sezione musica
+        </h1>
+
+        <!-- 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+
+    <p *ngIf="currentRoute === '/' || !currentRoute">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores
+        aperiam sit
+        porro officiis placeat nam perferendis minima rem iusto mollitia?</p> -->
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </div>
+
+</div>

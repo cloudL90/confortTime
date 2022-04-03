@@ -1,0 +1,169 @@
+@import '../../../../style/colorPalette.scss';
+.comforTime-formAdd__container{
+    background-color: map-get($color-palette , secondary );
+.comforTime-formAdd__row{
+    // padding: 5% 0; 
+
+    .comforTime-row__content{
+        padding-top: 3%;
+        justify-content: space-around;
+        display: flex;
+        align-items: center;
+         .foto{
+        background-image: url(../../../../../assets/sezioni/sez_movies.jpg);
+        width: 200px;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    h1{
+        text-transform: uppercase;
+        text-align: end;
+        font-size: 4rem;
+        color: map-get($color-palette ,quaternary );
+    }
+    h4{
+        font-size: 1.1rem;
+        color: map-get($color-palette ,quaternary );
+    }
+    }
+
+    .comforTime-dialog__content{
+        form{
+            background-color:  map-get($color-palette , secondary );
+            box-shadow: 0px 0px 15px map-get($color-palette , quaternary);
+            margin: 0 auto;
+            width: 60%;
+            padding: 41px;
+           
+            .mat-form-field{
+                display: block;
+                 mat-label{
+                color: map-get($color-palette , quaternary);
+            }
+            }
+            // .mat-form-field-infix{
+            //     padding: 0;
+            // }
+        }
+    }
+   
+}
+}
+
+  //- - - - - - - - - - Q U E R Y  - - - - - - - - - - - - - - - - - - 
+// mobile
+@media screen and (max-width: 480px ){
+
+    .comforTime-formAdd__container{
+        background-color: map-get($color-palette ,secondary );
+    
+    .comforTime-formAdd__row{
+        // padding: 5% 0; 
+    
+        .comforTime-row__content{
+            display: block;
+            margin: 0 auto;
+             .foto{
+            background-image: url(../../../../../assets/sezioni/sez_movies.jpg);
+            width: 105px;
+            height: 105px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+        h1{
+            margin-top: 3%;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.8rem;
+            color: map-get($color-palette , quaternary );
+        }
+        h4{
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        }
+    
+        .comforTime-dialog__content{
+            margin: 0 auto;
+            form{
+                
+                background-color:  map-get($color-palette , secondary );
+                box-shadow: 0px 0px 15px map-get($color-palette , quaternary);
+                margin: 0 auto;
+                width: 60%;
+                padding: 41px;
+               
+                mat-label{
+                    color: map-get($color-palette , quaternary);
+                }
+               
+            }
+        }
+       
+    }
+    }
+  
+ 
+
+}
+//tablet
+@media ( min-width: 481px ) and ( max-width: 768px ){
+ 
+    .comforTime-formAdd__container{
+        background-color: map-get($color-palette , secondary );
+    
+    .comforTime-formAdd__row{
+        // padding: 5% 0; 
+    
+        .comforTime-row__content{
+            display: block;
+            margin: 0 auto;
+             .foto{
+            background-image: url(../../../../../assets/sezioni/sez_movies.jpg);
+            width: 200px;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+        h1{
+            margin-top: 3%;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 2rem;
+            color: map-get($color-palette , quaternary );
+        }
+        h4{
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        }
+    
+        .comforTime-dialog__content{
+            margin: 0 auto;
+            form{
+                
+                background-color:  map-get($color-palette , secondary );
+                box-shadow: 0px 0px 15px map-get($color-palette , quaternary);
+                margin: 0 auto;
+                width: 60%;
+                padding: 41px;
+               
+                mat-label{
+                    color: map-get($color-palette , quaternary);
+                }
+               
+            }
+        }
+       
+    }
+    }
+  
+
+}
+//laptop
+@media only screen and ( min-width: 769px ){
+  
+}

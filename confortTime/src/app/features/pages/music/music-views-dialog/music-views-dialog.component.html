@@ -1,0 +1,38 @@
+<div class="comforTime-details__container">
+
+    <div class="comforTime-details__row">
+        <div class="comforTime-details__content">
+            <div class="riga"></div>
+            <div class="autore">
+                <h1>{{music.title}}</h1>
+            </div>
+
+            <div class="comforTime-details__download">
+                <div class="comforTime-details__downloadimg">
+                    <a href="{{ music.image_url }}">
+                        <img src={{music.image_url}}>
+                    </a>
+                </div>
+                <p>Clicca sull'immagine per scaricarla</p>
+            </div>
+            <div class="autore">
+
+                <h2>{{music.artist.name}}</h2>
+            </div>
+
+            <div class="riga"></div>
+            <div class="comforTime-card__BTNcard comforTime-card__title">
+                <div [ngClass]="{'limitTextHeight': isReadMore}">
+                    {{music.description}}
+                    <button type="button" (click)="showText()">
+                        {{ isReadMore ? 'Leggi di più': 'leggi di meno' }}
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

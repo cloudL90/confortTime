@@ -1,0 +1,198 @@
+<div *ngIf="!booksLoading">
+  <comforTime-progressbar></comforTime-progressbar>
+  <!-- <h1>Sto caricando</h1> -->
+</div>
+
+<div *ngIf="booksLoading">
+  <div class="comforTime-table__container  {{temaScelto}}" id="theme-dark">
+
+    <div class="comforTime-table__row">
+    <div class="comforTime-table__content">
+     <div class="comforTime-row__content">
+      <div class="foto">
+       
+      </div>
+      <div class="comforTime-row__contenTEXT">
+        <h1>Book</h1>
+        <h4>Aggiorna la tua lista di libri</h4>
+        <p>Leggi, dove e quando vuoi <br> i tuoi libri preferiti</p>
+        <button (click)="openDialog()" class="bookBTN btn-hover-scale">Aggiungi Libro!</button>
+      </div>
+      </div>
+     </div> 
+
+
+    </div><!-- row -->
+
+    <div class="comforTime-table__row">
+      <!-- row -->
+      <div class="comforTime-table__content">
+
+        <div class="mat-elevation-z8 hidden">
+
+          <!-- <button (click)="openDialog()">Dialog</button> -->
+         
+            <div>
+
+              <div class="theme-options">
+                <div>
+                  <mat-form-field appearance="standard">
+                    <mat-label>Cerca il tuo libro...</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                  </mat-form-field>
+
+                </div>
+                <div class="example-button-container">
+                  <button mat-mini-fab aria-label="Example icon button with a filter list icon" (click)="openDialog()">
+                    <mat-icon>note_add</mat-icon>
+                  </button>
+                </div>
+
+
+                <div>
+                  <div id="theme-dark" class="theme theme-dark" (click)="setTheme('theme-dark')"></div>
+                  <div id="theme-light" class="theme theme-light" (click)="setTheme('theme-light')"></div>
+                </div>
+              </div>
+            </div>
+
+            <!--- - - - - - - - - -  T A B L E - - - - - - - -  -->
+            <div class="tabella">
+              <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- Product Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Author Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.author.name}} </td>
+                </ng-container>
+
+                <!-- Product Name Column -->
+                <ng-container matColumnDef="lastname">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Author Lastname </th>
+                  <td mat-cell *matCellDef="let row"> {{row.author.lastname}} </td>
+                </ng-container>
+
+                <!-- Category Column -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                  <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+                </ng-container>
+
+                <!-- Condition Column -->
+                <ng-container matColumnDef="year">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
+                  <td mat-cell *matCellDef="let row"> {{row.year | date}} </td>
+                </ng-container>
+
+                <!-- Price Column -->
+                <ng-container matColumnDef="image_url">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                  <td mat-cell *matCellDef="let row"> <img src={{row.image_url}} width="100px"></td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button (click)="openViewsBook(row)" mat-icon-button color="info">
+                      <i class="fas fa-book"></i>
+                    </button>
+                    <button (click)="editBook(row)" mat-icon-button color="primary">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="deleteBook(row.book_id)" mat-icon-button color="warn">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{dataSource.filter}}"</td>
+                </tr>
+              </table>
+            </div>
+
+            <div>
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            </div>
+
+
+
+        </div><!-- Z8 -->
+
+
+ <!--- - - - - - - - - - C A R D - - - - - - - -  -->
+ <div class="comforTime-card__row">
+   <div class="comforTime-card__sezione">
+    <h1>BOOK</h1>
+   </div>
+        <div class="comforTime-card__container"*ngFor="let book of allBooks">
+         
+          <div class="comforTime-card__content">
+            <div class="comforTime-card__logoCard"></div> 
+           <div class="riga"></div>
+            <div class="comforTime-card__title">
+              <h1>{{book.title}}</h1>
+            </div>
+            <div  class="comforTime-card__img">
+              <img [src]="book.image_url">
+            </div>
+            <div class="">
+             <h1>Autore{{book.author.name}}</h1>
+            </div>
+
+           
+            <div class="riga"></div>
+            <div class="comforTime-card__BTNcard comforTime-card__title">
+
+              <div class="btn-card">
+                <button (click)="openViewsBook(book)" class="btn-hover-scale" mat-icon-button color="info">
+                  <mat-icon>description</mat-icon>
+                </button>
+              </div>
+  
+  
+              <div class="btn-card">
+                <button mat-icon-button  (click)="editBook(book)" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div> 
+  
+  
+              <div class="btn-card">
+                <button mat-icon-button (click)="deleteBook(book.book_id)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+             
+              </div>
+ 
+            </div>
+
+           
+         
+           
+
+          </div>
+        </div>
+      </div>
+
+ <!--- - - - - - - - - - C A R D - - - - - - - -  -->
+
+      </div>
+    
+    
+
+  </div><!-- row -->
+
+
+</div><!-- container -->
+</div>
+
+<div *ngIf="!allBooks">
+  <h1>Non hai ancora inserito niente!</h1>
+  <button (click)="openDialog()">Aggiungi una Libro!</button>
+</div>
